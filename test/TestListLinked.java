@@ -13,7 +13,6 @@ public class TestListLinked {
         list.addHead(10);
         System.out.println(list);
     }
-
     static void testAddTailList() {
         ListLinked<Integer> list = new ListLinked<>();
         list.addTail(5);
@@ -24,30 +23,27 @@ public class TestListLinked {
         System.out.println(list);
     }
 
-    static void testAddListStrings() {
+    static void testAddListStrings()
+    {
         ListLinked<String> list = new ListLinked<>();
         list.add("Jesus");
-        list.add("Janneth");
-        list.add("Dilema");
-        list.add("Gaby");
-        list.add("Indiana");
+        list.add("Carlos");
+        list.add("Sebastian");
         System.out.println(list);
     }
 
-    static void testAddListBooleans() {
+    static void testAddTailListBooleans() {
         ListLinked<Boolean> list = new ListLinked<>();
-        list.add(true);
-        list.add(false);
-        list.add(true);
-        list.add(false);
-        list.add(false);
+        list.addTail(true);
+        list.addTail(false);
+        list.addTail(true);
+        list.addTail(true);
+        list.addTail(false);
         System.out.println(list);
     }
 
     public static void main(String[] args) {
-        // testAddHeadList();
-        // testAddTailList();
-        // testAddListStrings();
-        testAddListBooleans();
+        //testAddHeadList();
+        testAddTailList();
     }
 }

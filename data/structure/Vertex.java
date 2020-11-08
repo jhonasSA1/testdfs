@@ -6,12 +6,31 @@ public class Vertex {
     private State state;
     private int jumps;
     private Vertex parent;
-
-    public Vertex(String label) {
+    private int timeIn;
+    private int timeOut;
+    
+    public Vertex(String label)
+    {
         this.label = label;
-        this.jumps = 0;
         edges = new ListLinked<>();
-        state = State.NO_VISITADO;
+        this.jumps = 0;
+        this.state = State.NOT_VISITED;
+    }
+
+    public void setTimeIn(int time) {
+        this.timeIn = time;
+    }
+
+    public int getTimeIn() {
+        return timeIn;
+    }
+
+    public void setTimeOut(int time) {
+        this.timeOut = time;
+    }
+
+    public int getTimeOut() {
+        return timeOut;
     }
 
     public void setParent(Vertex parent) {
@@ -30,32 +49,39 @@ public class Vertex {
         this.jumps = jumps;
     }
 
-    public void setStatus(State state) {
+    public void setStatus(State state)
+    {
         this.state = state;
     }
 
-    public State getState() {
+    public State getState()
+    {
         return state;
     }
 
-    public void addEdge(Edge edge) {
-        edges.add(edge);
-    }
-
-    public void addEdge(Vertex v1, Vertex v2, double weight) {
-        Edge edge = new Edge(v1, v2, weight);
-        edges.add(edge);
-    }
-
-    public String getLabel() {
+    public String getLabel()
+    {
         return label;
     }
 
-    public ListLinked<Edge> getEdges() {
+    public ListLinked<Edge> getEdges()
+    {
         return edges;
     }
 
-    public String toString() {
-        return "Vertex={label={" + label + "},edges={" + edges + "}}";
+    public String toString()
+    {
+        return "Vertex={label={"+label+"},edges={"+edges+"}}";
+    }
+
+    public void addEdge(Edge edge)
+    {
+        edges.add(edge);
+    }
+
+    public void addEdge(Vertex v1, Vertex v2, double weight)
+    {
+        Edge edge = new Edge(v1, v2, weight);
+        edges.add(edge);
     }
 }

@@ -15,7 +15,7 @@ public class ListLinked<E> {
     }
 
     public void addHead(E data) {
-        Node<E> node = new Node<>(data);
+        Node<E> node = new Node<E>(data);
         if (isEmpty()) {
             tail = node;
         }
@@ -35,7 +35,8 @@ public class ListLinked<E> {
         size++;
     }
 
-    public void add(E data) {
+    public void add(E data)
+    {
         Node<E> node = new Node<>(data);
         if (isEmpty()) {
             head = node;
@@ -46,15 +47,79 @@ public class ListLinked<E> {
         size++;
     }
 
-    public Node<E> getHead() {
+    public void removeHead()
+    {
+        if(!isEmpty())
+            head = head.getLink();
+    }
+
+    public void removeTail()
+    {
+        Node<E> aux=null;
+        Node<E> prev=null;
+        if(!isEmpty())
+        {
+            aux = head;
+            if(aux.getLink()==null)
+            {
+                if(aux == head)
+                {
+                    head = null;
+                    tail = null;
+                }
+                else
+                {
+                    prev.setLink(null);
+                    tail = prev;
+                }
+                size--;
+            }
+            prev = aux;
+            aux = aux.getLink();
+        }
+    }
+
+    public Node<E> getNode(int j)
+    {
+        Node<E> aux=head;
+        int i=0;
+        if(!isEmpty())
+        {
+            while(aux.getLink()!=null)
+            {
+                if(j==i)
+                    break;
+                aux = aux.getLink();
+                i++;
+            }
+        }
+        return aux;
+    }
+    
+    public Node<E> getHead()
+    {
         return head;
     }
 
-    public Node<E> getTail() {
-        return tail;
+    public Node<E> getTail()
+    {
+        Node<E> aux = null;
+        if(!isEmpty())
+        {
+            aux = head;
+            while(aux.getLink()!=null)
+                aux = aux.getLink();
+        }
+        return aux;
     }
 
-    public int size() {
+    public void setLink(Node<E> current, Node<E> link)
+    {
+        current.setLink(link);
+    }
+
+    public int size()
+    {
         return size;
     }
 
